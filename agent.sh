@@ -227,9 +227,9 @@ data_post="token=${auth[0]}&data=$(base "$version") $(base "$uptime") $(base "$s
 # API request with automatic termination
 if [ -n "$(command -v timeout)" ]
 then
-	timeout -s SIGKILL 30 wget -q -o /dev/null -O /etc/onedash/agent.log -T 25 --post-data "$data_post" --no-check-certificate "https://push.onedash.ca/server_monitoring"
+	timeout -s SIGKILL 30 wget -q -o /dev/null -O /etc/onedash/agent.log -T 25 -U "Mozilla/5.0 (Macintosh; Intel Mac OS) AppleWebKit/Safari OneDash Aent" --post-data "$data_post" --no-check-certificate "https://push.onedash.ca/server_monitoring"
 else
-	wget -q -o /dev/null -O /etc/onedash/agent.log -T 25 --post-data "$data_post" --no-check-certificate "https://push.onedash.ca/server_monitoring"
+	wget -q -o /dev/null -O /etc/onedash/agent.log -T 25 -U "Mozilla/5.0 (Macintosh; Intel Mac OS) AppleWebKit/Safari OneDash Aent" --post-data "$data_post" --no-check-certificate "https://push.onedash.ca/server_monitoring"
 	wget_pid=$!
 	wget_counter=0
 	wget_timeout=30
