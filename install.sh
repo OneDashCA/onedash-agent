@@ -136,7 +136,7 @@ then
 	chmod +s `type -p ping`
 
 	# Configure cron
-	crontab -u onedash -l 2>/dev/null | { cat; echo "*/2 * * * * bash /etc/onedash/agent.sh > /etc/onedash/cron.log 2>&1"; } | crontab -u onedash -
+	crontab -u onedash -l 2>/dev/null | { cat; echo "* * * * * bash /etc/onedash/agent.sh > /etc/onedash/cron.log 2>&1"; } | crontab -u onedash -
 
 	# Show success
 	echo -e "|\n|   Success: The OneDash agent has been installed\n|"
